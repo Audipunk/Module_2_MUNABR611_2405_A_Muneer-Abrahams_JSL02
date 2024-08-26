@@ -22,21 +22,35 @@ const addNewGoal = () => {
     const goalInput = document.querySelector('#goalInput').value;
     const goalList = document.querySelector('#goalList');
     
-    // ⚠️ Hint 1: Check for duplicates
-    // Use 'goalList' to get all existing goals and check if 'goalInput' matches any of them.
+    const existingGoals = goalList.querySelectorAll("li");
+
+    // Initialize a flag variable 'isDuplicate' to false
+    let isDuplicate = false;
     
-    // ⚠️ Hint 2: Prevent duplicates
-    // If a duplicate is found, display an alert to the user and don't add the goal to the list.
-    // If it's not a duplicate, proceed with adding it as a new goal.
+    // Loop through each existing goal list item
+    for (let i = 0; i < existingGoals.length; i++) {
+     
+      if (existingGoals[i].textContent === goalInput) {
+        
+        isDuplicate = true;
+       
+        break;
+      }
+    }
     
-    // ⚠️ Hint 3: Code structure
-    // You might want to wrap the duplicate-checking logic in an 'if' statement.
+      if (isDuplicate) {
+        alert("This goal already exists. Please enter a new goal.");
+        return;
+      }
+     
+      const newGoal = document.createElement("li");
+      newGoal.textContent = goalInput;
+      goalList.appendChild(newGoal);
+    };
     
-    // ⚠️ Hint 4: Event listener
-    // The event listener that removes goals when clicked is not related to this issue.
-    // Focus on preventing duplicates for now.
+    document.querySelector("#submitGoal").addEventListener("click", addNewGoal);
     
-    const newGoal = document.createElement('li');
+    const newGoal = document.createElement('li');{
     newGoal.textContent = goalInput;
     goalList.appendChild(newGoal);
 };
