@@ -38,6 +38,7 @@ const addNewGoal = () => {
       }
     }
     
+
       if (isDuplicate) {
         alert("This goal already exists. Please enter a new goal.");
         return;
@@ -50,15 +51,7 @@ const addNewGoal = () => {
     
     document.querySelector("#submitGoal").addEventListener("click", addNewGoal);
     
-    const newGoal = document.createElement('li');{
-    newGoal.textContent = goalInput;
-    goalList.appendChild(newGoal);
-};
 
-// Add event listener to the goal submit button
-document.querySelector('#submitGoal').addEventListener('click', addNewGoal);
-
-///
 let waterIntake = 0;
 const updateWaterIntake = (change) => {
     waterIntake += change;
